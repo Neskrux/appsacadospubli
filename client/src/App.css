@@ -1,0 +1,98 @@
+.shine-text {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.shine-text::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine-move 2.2s infinite;
+}
+
+@keyframes shine-move {
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shine-gradient {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.shine-effect {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.shine-effect .shine-anim {
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine-move 1.2s cubic-bezier(0.4,0.0,0.2,1) 1;
+  pointer-events: none;
+}
+
+@keyframes shine-move {
+  100% {
+    left: 125%;
+  }
+}
+
+.luxo-shine {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.luxo-shine .luxo-shine-anim {
+  position: absolute;
+  top: 0; left: -60%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: luxo-shine-move 1.2s cubic-bezier(0.4,0.0,0.2,1) infinite;
+  pointer-events: none;
+}
+
+@keyframes luxo-shine-move {
+  100% {
+    left: 120%;
+  }
+} 
