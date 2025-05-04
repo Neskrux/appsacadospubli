@@ -6,6 +6,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { API_URLS } from '../config';
 
 export default function Login() {
   const history = useHistory();
@@ -20,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://192.168.0.27:5000/api/auth/login', form);
+      const res = await axios.post(API_URLS.login, form);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       setSnackbar({ open: true, message: 'Login realizado com sucesso!', severity: 'success' });

@@ -58,21 +58,50 @@ export default function AuthHome() {
           textAlign: 'center'
         }}
       >
-        <Typography
-          variant="h2"
-          sx={{
-            color: 'white',
-            fontWeight: 800,
-            mb: 4,
-            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-            background: 'linear-gradient(135deg, #fff 0%, #94A3B8 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            animation: 'gradient 8s ease infinite'
-          }}
-        >
-          Encontre seu tratamento no Boleto.
-        </Typography>
+        <Box sx={{ position: 'relative', display: 'inline-block', mb: 4 }}>
+          {/* Texto base branco */}
+          <Box
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+              color: '#fff',
+              textAlign: 'center',
+              lineHeight: 1.1,
+              letterSpacing: '-1px',
+              userSelect: 'none',
+              position: 'relative',
+              zIndex: 1
+            }}
+          >
+            Encontre seu tratamento no Boleto.
+          </Box>
+          {/* Texto com brilho animado */}
+          <Box
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+              color: 'transparent',
+              textAlign: 'center',
+              lineHeight: 1.1,
+              letterSpacing: '-1px',
+              userSelect: 'none',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              zIndex: 2,
+              background: 'linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)',
+              backgroundSize: '200% auto',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              animation: 'luxo-shine-move 1.2s cubic-bezier(0.4,0.0,0.2,1) infinite',
+              pointerEvents: 'none'
+            }}
+          >
+            Encontre seu tratamento no Boleto.
+          </Box>
+        </Box>
 
         <Typography
           variant="h5"

@@ -19,6 +19,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import PhoneIcon from '@mui/icons-material/Phone';
 import BadgeIcon from '@mui/icons-material/Badge';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { API_URLS } from '../config';
 
 export default function CadastroPaciente() {
   const history = useHistory();
@@ -39,7 +40,7 @@ export default function CadastroPaciente() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/cadastro-paciente', form);
+      const res = await axios.post(API_URLS.cadastroPaciente, form);
       setSnackbar({ open: true, message: res.data.message, severity: 'success' });
       setTimeout(() => history.push('/login'), 1500);
     } catch (err) {

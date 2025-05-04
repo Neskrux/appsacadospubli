@@ -15,6 +15,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
+import { API_URLS } from '../config';
 
 export default function ChatModal({ open, onClose, clinica, chatId }) {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +28,7 @@ export default function ChatModal({ open, onClose, clinica, chatId }) {
   React.useEffect(() => {
     if (open && chatId) {
       setLoading(true);
-      axios.get(`http://localhost:5000/api/chats/${chatId}/messages`)
+      axios.get(`${API_URLS.chats}/${chatId}/messages`)
         .then(res => setMensagens(res.data))
         .catch(() => setMensagens([]))
         .finally(() => setLoading(false));
@@ -49,13 +50,13 @@ export default function ChatModal({ open, onClose, clinica, chatId }) {
   const handleEnviarMensagem = async () => {
     if (!mensagem.trim()) return;
     try {
-      await axios.post(`http://localhost:5000/api/chats/${chatId}/messages`, {
+      await axios.post(`${API_URLS.chats}/${chatId}/messages`, {
         text: mensagem
       });
       setMensagem('');
       setEnviado(true);
       // Buscar mensagens novamente após envio
-      const res = await axios.get(`http://localhost:5000/api/chats/${chatId}/messages`);
+      const res = await axios.get(`${API_URLS.chats}/${chatId}/messages`);
       setMensagens(res.data);
     } catch (err) {
       alert('Erro ao enviar mensagem!');

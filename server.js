@@ -14,27 +14,31 @@ const Paciente = require('./models/Paciente');
 
 const app = express();
 const server = http.createServer(app);
+
+// Configuração do Socket.IO com CORS
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.NODE_ENV === 'production' ? '*' : ["http://localhost:3000", "http://192.168.0.27:3000"],
     methods: ["GET", "POST"]
   }
 });
 
-// Middleware
+// Middleware CORS
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://192.168.0.27:3000'],
+  origin: process.env.NODE_ENV === 'production' ? '*' : ["http://localhost:3000", "http://192.168.0.27:3000"],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
 app.use(express.json());
 
 // Conexão com MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/app-sacados', {
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/app-sacados';
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('Conectado ao MongoDB'))
+.then(() => console.log('Conectado ao MongoDB em:', MONGODB_URI))
 .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
 // Rotas
