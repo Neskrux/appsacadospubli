@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import MainApp from './MainApp';
 import BuscarClinicas from './pages/BuscarClinicas';
 import MeusAgendamentos from './pages/MeusAgendamentos';
+import Perfil from './pages/Perfil';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/app" component={MainApp} />
       <Route path="/buscar-clinicas" component={BuscarClinicas} />
       <Route path="/meus-agendamentos" component={MeusAgendamentos} />
+      <Route path="/perfil" component={Perfil} />
     </Switch>
   );
 } 
